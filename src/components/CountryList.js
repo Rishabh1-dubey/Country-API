@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
 import CountryCrad from "./CountryCrad";
 import CountryData from "./CountryData";
+import Shimmer from "./Shimmer";
 
 const CountryList = ({ query }) => {
-  const [CountryData, setCountriesData] = useState([])
-  console.log(CountryData);
+  const [CountryData, setCountriesData] = useState([]);
+  // console.log(CountryData);
 
-  
-  useEffect(()=>{
-    // fetchmenu();
-
-
-fetch('https://restcountries.com/v3.1/all')
-.then((res)=>res.json())
-.then((data)=>{
-  setCountriesData(data)
-})
-
-  },[])
+  useEffect(() => {
+    // fetchmenu()
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((data) => {
+        setCountriesData(data);
+      });
+  }, []);
   const image = (
     <img
       className=" ml-64 pt-30 h-[500px] "
@@ -29,18 +26,19 @@ fetch('https://restcountries.com/v3.1/all')
   );
   // console.log(filterCountries);
 
-
   //fetch our API -------------
 
   // const fetchmenu=async()=>{
   //   const data= await fetch('https://restcountries.com/v3.1/all')
   //   const json=data.json()
   //   console.log(json);
-  // } 
-
-
-
-
+  // }
+  setTimeout(()=>{
+    
+  })
+if(CountryData.length===0){
+  return <Shimmer/>
+}
   return filterCountries.length === 0 ? (
     image
   ) : (
